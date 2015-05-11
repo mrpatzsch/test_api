@@ -1,0 +1,45 @@
+<h1>Attempt at getting data</h1>
+<h2>Search</h2>
+<%= form_for :hotel, method: "POST", action: "/meow" do %>
+  <%= label_tag(:city, "City:") %>
+  <%= text_field_tag(:city) %>
+  <%= label_tag(:state, "State:") %>
+  <%= text_field_tag(:state) %>
+  <%= label_tag(:arrive, "Arrive:") %>
+  <%= text_field_tag(:arrive) %>
+  <%= label_tag(:depart, "Depart:") %>
+  <%= text_field_tag(:depart) %>
+  <%= submit_tag("Search") %>
+<% end %>
+<ol>
+<% @hotels.each do |hotel| %>
+  <div>
+      <li><%= hotel["name"] %>
+   <%= number_to_currency(hotel["lowRate"]) %>
+   <%= hotel["hotelRating"] %>
+   <img src="http://images.travelnow.com/<%= hotel["thumbNailUrl"] %>">
+ </div></li>
+<% end %>
+</ol>
+
+<div class="search_form">
+  <form id="search" name="search" action="">
+    <fieldset>
+      <label for="city" id="city_label">City</label>
+      <input type="text" name="city" id="city" value="" class="text-input" />
+      <label for="state" id="state_label">State</label>
+      <input type="text" name="stateProvinceCode" id="state" value="" class="text-input" />
+      <label for="arrive" id="arrive_label">Arrive</label>
+      <input type="text" name="countryCode=US&numberOfResults=20&arrivalDate=" id="arrive" value="" class="text-input" />
+      <label for="depart" id="depart_label">Depart</label>
+      <input type="text" name="departureDate" id="depart" value="" class="text-input" />
+      <input type="submit" name="submit" class="button" id="submit_button" value="Send" />
+    </fieldset>
+  </form>
+</div>
+<div id="hotel" class="row">
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
